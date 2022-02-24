@@ -17,9 +17,32 @@ Prerequisites:
  
  Usage guide:
  ```sh
- python3 script.py
+ python3 generate.py
  ```
  or
   ```sh
- python3 script.py >> output.txt
+ python3 generate.py >> output.txt
+ ```
+
+Example:
+ ```
+ jaba@M1 ~ % python3 generate.py
+config firewall address 
+ edit CLOUDFRONT1 
+ set subnet 120.52.22.96/27 
+ end
+config firewall addrgrp 
+ edit CLOUDFRONT 
+ select member CLOUDFRONT1 
+ end
+config firewall address 
+ edit CLOUDFRONT2 
+ set subnet 205.251.249.0/24 
+ end
+config firewall addrgrp 
+ edit CLOUDFRONT 
+ select member CLOUDFRONT2 
+ end
+ ...
+ 
  ```
