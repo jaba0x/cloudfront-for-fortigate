@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 200" role="img" aria-labelledby="t d">
+  <title id="t">How FrontGate fits in</title>
+  <desc id="d">FrontGate reads the official AWS IP ranges, filters the CloudFront prefixes and writes FortiOS address objects and an address group that you apply to your FortiGate.</desc>
+  <style>
+    .card { fill: #0f1b2d; }
+    .node { fill: #16263f; stroke: #2a3c5c; stroke-width: 1.5; }
+    .hero { stroke: #2dd4bf; }
+    .name { font: 600 15px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #ffffff; }
+    .sub  { font: 400 11.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #9fb0cc; }
+    .mono { font: 500 11.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #2dd4bf; }
+    .edge { font: 500 10.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #9fb0cc; }
+    .wire { stroke: #3b5174; stroke-width: 2; stroke-dasharray: 5 6; animation: march 1.1s linear infinite; }
+    .tip  { fill: #3b5174; }
+    .dot  { fill: #f5b94a; animation: flow 2.2s cubic-bezier(.45,0,.55,1) infinite; }
+    .d2   { animation-delay: .7s; }
+    .d3   { animation-delay: 1.4s; }
+    .glow { fill: none; stroke: #2dd4bf; stroke-width: 2; opacity: 0; animation: pulse 2.2s ease-out infinite; animation-delay: .9s; }
+    @keyframes march { to { stroke-dashoffset: -11; } }
+    @keyframes flow {
+      0%   { transform: translateX(0);    opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { transform: translateX(72px); opacity: 0; }
+    }
+    @keyframes pulse {
+      0%   { opacity: .7; transform: scale(1); }
+      70%  { opacity: 0;  transform: scale(1.06, 1.14); }
+      100% { opacity: 0;  transform: scale(1.06, 1.14); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wire, .dot, .glow { animation: none; }
+      .dot { opacity: 1; transform: translateX(36px); }
+    }
+  </style>
+
+  <rect class="card" width="960" height="200" rx="18"/>
+
+  <!-- connectors: each spans the 80px gap between two nodes -->
+  <g>
+    <line class="wire" x1="199" y1="100" x2="265" y2="100"/>
+    <path class="tip" d="M265 94l10 6-10 6z"/>
+    <text class="edge" x="235" y="84" text-anchor="middle">fetch</text>
+    <circle class="dot" cx="199" cy="100" r="4"/>
+
+    <line class="wire" x1="444" y1="100" x2="510" y2="100"/>
+    <path class="tip" d="M510 94l10 6-10 6z"/>
+    <text class="edge" x="480" y="84" text-anchor="middle">generate</text>
+    <circle class="dot d2" cx="444" cy="100" r="4"/>
+
+    <line class="wire" x1="689" y1="100" x2="755" y2="100"/>
+    <path class="tip" d="M755 94l10 6-10 6z"/>
+    <text class="edge" x="725" y="84" text-anchor="middle">apply</text>
+    <circle class="dot d3" cx="689" cy="100" r="4"/>
+  </g>
+
+  <!-- nodes: 165 x 84, 80px apart -->
+  <g>
+    <rect class="node" x="30" y="58" width="165" height="84" rx="12"/>
+    <text class="name" x="112.500" y="96" text-anchor="middle">AWS IP ranges</text>
+    <text class="sub" x="112.500" y="117" text-anchor="middle">ip-ranges.json</text>
+  </g>
+  <g>
+    <rect class="glow" x="275" y="58" width="165" height="84" rx="12" style="transform-origin: 357.5px 100px"/>
+    <rect class="node hero" x="275" y="58" width="165" height="84" rx="12"/>
+    <text class="name" x="357.500" y="96" text-anchor="middle">FrontGate</text>
+    <text class="mono" x="357.500" y="117" text-anchor="middle">generate.py</text>
+  </g>
+  <g>
+    <rect class="node" x="520" y="58" width="165" height="84" rx="12"/>
+    <text class="name" x="602.500" y="96" text-anchor="middle">FortiOS CLI</text>
+    <text class="sub" x="602.500" y="117" text-anchor="middle">address objects + group</text>
+  </g>
+  <g>
+    <rect class="node" x="765" y="58" width="165" height="84" rx="12"/>
+    <text class="name" x="847.500" y="96" text-anchor="middle">FortiGate</text>
+    <text class="sub" x="847.500" y="117" text-anchor="middle">policies use the group</text>
+  </g>
+</svg>
